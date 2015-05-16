@@ -1,2 +1,2 @@
-# Hatch_Game
-A C++ Hatch Game.
+# Match_Game
+A C++ Match Game.
