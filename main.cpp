@@ -36,43 +36,43 @@ void recond_func()
 void play()
 {
 	recond(" ");
-	recond("开始游戏...");
+	recond("Start Game...");
 	system("CLS");
 	total = 0;n = 0;b = false;
 	while (cin >> n)
 	{
 		if (n == 0)
 		{
-			cout << "你必须拿走至少1根火柴!";
-			recond("玩家拿走了少于1根火柴");
+			cout << "You must get at least one match!";
+			recond("Player get least one match");
 			continue;
 		}
 		else if (n > GET)
 		{
-			cout << "你不能拿走多于" << GET << "根火柴！";
-			recond("玩家拿走了多于" + to_string(GET) + "根火柴");
+			cout << "You can\'t get more than " << GET << " match!";
+			recond("Player get more than " + to_string(GET) + " match");
 			continue;
 		}
 		else if (n >= MAX - total)
 		{
-			cout << "你不能拿走多于当前剩余的" << MAX - total << "根火柴！";
-			recond("玩家拿走了多于当前剩余的" + to_string(MAX - total) + "根火柴");
+			cout << "You can\'t take more than the rest of the current " << MAX - total << " match!";
+			recond("Player take more than the rest of the current " + to_string(MAX - total) + " match");
 			continue;
 		}
 		total += n;
-		cout << "计算机正在判断:" << endl;
-		cout << "当前总共取了火柴数:" << total << " 总共有火柴:" << MAX << " 还剩余" << MAX - total << endl;
+		cout << "Computer:" << endl;
+		cout << "Total number of get matches:" << total << " Total number of matches:" << MAX << " Remaining " << MAX - total << endl;
 		if (total == MAX - 1 || total == MAX)
 		{
-			cout << "您输了！" << endl;
-			recond("玩家输了");
+			cout << "You Lost!!!" << endl;
+			recond("Player lost the game");
 			++computer_win;
 			break;
 		}
 		else if (total >= MAX - 1)
 		{
-			cout << "计算机输了！" << endl;
-			recond("计算机输了");
+			cout << "Computer Lost!!!" << endl;
+			recond("Computer lost the game");
 			++player_win;
 			break;
 		}
@@ -82,8 +82,8 @@ void play()
 			{
 				if (total + i < MAX - 1)
 				{
-					cout << "计算机拿走" << i << "根火柴" << endl;
-					recond("计算机拿走了" + to_string(i) + "根火柴");
+					cout << "Computer get " << i << " match" << endl;
+					recond("Computer get " + to_string(i) + " match");
 					total += i;
 					break;
 				}
@@ -94,8 +94,8 @@ void play()
 			}
 			if (b)
 			{
-				cout << "计算机别无他法，准备拿走1根火柴。" << endl;
-				recond("计算机拿走了1根火柴");
+				cout << "The computer could, ready to take the 1 match." << endl;
+				recond("Computer get 1 match");
 				total += 1;
 			}
 		}
@@ -106,7 +106,7 @@ int main()
 {
 main_func:
 	system("cls");
-	cout << "输出版权信息:\n" << "Hatch Game\n" << \
+	cout << "Output Copyright Message:\n" << "Hatch Game\n" << \
 		"Copyright(C) 2015 Lasm_Gratel.\n" << \
 		'\n' << \
 		"This program is free software : you can redistribute it and / or modify\n" << \
@@ -121,27 +121,27 @@ main_func:
 		'\n' << \
 		"You should have received a copy of the GNU General Public License\n" << \
 		"along with this program.If not, see <http://www.gnu.org/licenses/>.\n";
-	cout << "想自定义吗?输入1自定义，输入0按照默认处理。";
+	cout << "Did you wan\'t to customize?input 1 to customize,or 0 to continue without setting.";
 	cin >> n;
 	if (n)
 	{
-		cout << "请输入每次最多拿多少根火柴:";
+		cout << "Please input max get number:";
 		cin >> GET;
-		recond("玩家自定义每次最多拿" + to_string(GET) + "根火柴");
-		cout << "请输入总共有多少根火柴:";
+		recond("Player customize max get number:" + to_string(GET));
+		cout << "Please input total matches:";
 		cin >> MAX;
-		recond("玩家自定义每次总共有" + to_string(GET) + "根火柴");
+		recond("Player customize total matches:" + to_string(GET));
 	}
-	cout << "当前计算机赢了" << computer_win << "局，玩家赢了" << player_win << "局。";
-	cout << "游戏规则:" << endl;
-	cout << "1.总共有" << MAX << "个火柴" << endl;
-	cout << "2.每个人可以最多取走" << GET << "个火柴。" << endl;
-	cout << "人机对弈" << endl;
-	cout << "请输入1来开始游戏，0来退出游戏:";
+	cout << "Now Computer win " << computer_win << " round,Player win " << player_win << " round.";
+	cout << "Game Rule:" << endl;
+	cout << "1.There is " << MAX << " matches." << endl;
+	cout << "2.You can only get max " << GET << "\'s matches." << endl;
+	cout << "Player VS Computer" << endl;
+	cout << "Input 1 to play the game,or 0 to exit:";
 	cin >> n;
 	if (n)
 		play();
-	cout << "想重来一遍吗？输入1重来,输入0退出:";
+	cout << "Do you wan\'t to replay?Input 1 to replay,or 0 to exit:";
 	cin >> n;
 	if (n)
 		goto main_func;
